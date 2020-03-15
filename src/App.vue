@@ -28,33 +28,94 @@
       <v-spacer></v-spacer>
 
       <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        href=""
         target="_blank"
         text
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
+        <span class="mr-2">Home</span>
+      </v-btn>
+      <v-btn
+        href=""
+        target="_blank"
+        text
+      >
+        <span class="mr-2">Login</span>
       </v-btn>
     </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+      <v-card width="400" class="mx-auto my-5">
+        <v-card-title>
+          Login
+        </v-card-title>
+        <v-card-text>
+          <v-form>
+            <v-text-field 
+            label="Username">
+            </v-text-field>
+            <v-text-field
+              :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+              :type="show1 ? 'password' : 'text'"
+              label="Password" 
+              @click:append="show1 = !show1">
+            </v-text-field>
+          </v-form>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn text rounded href="" color="success"> Register </v-btn>
+          <v-btn text rounded href="" color="info" depressed> Login </v-btn>
+
+
+        </v-card-actions>
+      </v-card>
+<v-footer
+    color="primary lighten-1"
+    padless
+  >
+    <v-row
+      justify="center"
+      no-gutters
+    >
+      <v-btn
+        v-for="link in links"
+        :key="link"
+        color="white"
+        text
+        rounded
+        class="my-2"
+      >
+        {{ link }}
+      </v-btn>
+      <v-col
+        class="primary lighten-2 py-4 text-center white--text"
+        cols="12"
+      >
+        {{ new Date().getFullYear() }} — <strong>Beautify with Vuetify by Gaya Correia Dias Rabello </strong>
+      </v-col>
+    </v-row>
+  </v-footer>
+      <!-- <HelloWorld/> -->
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+//import HelloWorld from './components/HelloWorld';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    //HelloWorld,
+    
   },
 
   data: () => ({
-    //
+    show1: false,
+    links: [
+        'Home',
+        'Login',
+      ],
   }),
 };
 </script>
