@@ -28,46 +28,22 @@
       <v-spacer></v-spacer>
 
       <v-btn
-        href=""
-        target="_blank"
+        v-for="link in links"
+        :key="link"
+        color="white"
         text
+        rounded
+        :to="link.url"
+        class="my-2"
       >
-        <span class="mr-2">Home</span>
-      </v-btn>
-      <v-btn
-        href=""
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Login</span>
+        {{ link.label }}
       </v-btn>
     </v-app-bar>
 
     <v-content>
-      <v-card width="400" class="mx-auto my-5">
-        <v-card-title>
-          Login
-        </v-card-title>
-        <v-card-text>
-          <v-form>
-            <v-text-field 
-            label="Username">
-            </v-text-field>
-            <v-text-field
-              :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-              :type="show1 ? 'password' : 'text'"
-              label="Password" 
-              @click:append="show1 = !show1">
-            </v-text-field>
-          </v-form>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn text rounded href="" color="success"> Register </v-btn>
-          <v-btn text rounded href="" color="info" depressed> Login </v-btn>
-
-
-        </v-card-actions>
-      </v-card>
+      <router-view>
+      </router-view>
+    </v-content>
 <v-footer
     color="primary lighten-1"
     padless
@@ -82,9 +58,10 @@
         color="white"
         text
         rounded
+        :to="link.url"
         class="my-2"
       >
-        {{ link }}
+        {{ link.label }}
       </v-btn>
       <v-col
         class="primary lighten-2 py-4 text-center white--text"
@@ -95,7 +72,6 @@
     </v-row>
   </v-footer>
       <!-- <HelloWorld/> -->
-    </v-content>
   </v-app>
 </template>
 
@@ -113,8 +89,19 @@ export default {
   data: () => ({
     show1: false,
     links: [
-        'Home',
-        'Login',
+        {
+          label: 'Home',
+          url: '/',
+        },
+        {
+          label: 'Login',
+          url: '/login',
+        },
+        {
+          label: 'Dashboard',
+          url: '/dashboard',
+        }
+      
       ],
   }),
 };
